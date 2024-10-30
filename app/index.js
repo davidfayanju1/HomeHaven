@@ -63,6 +63,24 @@ const Index = () => {
     router.push("login");
   };
 
+  const handleNext = () => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({
+        x: (activeIndex + 1) * SCREEN_WIDTH,
+        animated: true,
+      });
+    }
+  };
+
+  const handlePrev = () => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({
+        x: (activeIndex - 1) * SCREEN_WIDTH,
+        animated: true,
+      });
+    }
+  };
+
   return (
     <>
       {/* <SafeAreaView edges={["top", "bottom"]} style={tw``}> */}
@@ -91,7 +109,7 @@ const Index = () => {
 
             <View
               style={[
-                tw`w-full items-center justify-start`,
+                tw`w-full items-center justify-start px-3`,
                 {
                   width: SCREEN_WIDTH,
                   borderTopRightRadius: 20,
@@ -102,7 +120,7 @@ const Index = () => {
             >
               <Text
                 style={tw.style(
-                  `text-[1.7rem] font-bold text-center text-black mt-10 mb-3`,
+                  `text-[2.3rem] font-bold text-center text-black mt-8`,
                   {
                     fontFamily: "Uber-bold",
                   }
@@ -112,7 +130,7 @@ const Index = () => {
               </Text>
               <Text
                 style={tw.style(
-                  `text-5 mt-3 text-[#005667] text-center text-gray-500`,
+                  `text-5 mt-3 text-[#757575] text-center text-gray-500`,
                   {
                     fontFamily: "Uber-medium",
                   }
@@ -156,22 +174,26 @@ const Index = () => {
         })}
       </View>
       <View
-        style={tw`w-full mt-10 mb-15  items-center justify-between flex-row px-5`}
+        style={tw`w-full mt-10 mb-15 items-center justify-between flex-row px-5 gap-2`}
       >
-        <TouchableOpacity>
-          <Text
-            style={tw.style(`text-center text-black font-semibold text-4.7`, {
-              fontFamily: "Uber-medium",
-            })}
-          >
-            Back
-          </Text>
-        </TouchableOpacity>
-        <Button
-          handlePress={() => router.push("/signup")}
-          containerStyle={"w-[80%]"}
-          title={"Next"}
-        />
+        {activeIndex !== 0 && (
+          <TouchableOpacity onPress={handlePrev} style={tw`w-[20%]`}>
+            <Text
+              style={tw.style(`text-center text-black font-semibold text-4.7`, {
+                fontFamily: "Uber-medium",
+              })}
+            >
+              Back
+            </Text>
+          </TouchableOpacity>
+        )}
+        {activeIndex !== 2 && (
+          <Button
+            handlePress={handleNext}
+            containerStyle={`${activeIndex !== 0 ? "w-[80%]" : "w-full"}`}
+            title={"Next"}
+          />
+        )}
       </View>
       {/* </SafeAreaView> */}
     </>
