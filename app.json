@@ -3,11 +3,12 @@
     "name": "HomeHaven",
     "slug": "HomeHaven",
     "version": "1.0.0",
+    "scheme": "homehaven",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/splash.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,12 +17,23 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/splash.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/images/splash.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "da327b75-7dab-46ba-b7f4-9c964f854088"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/da327b75-7dab-46ba-b7f4-9c964f854088"
     }
   }
 }
