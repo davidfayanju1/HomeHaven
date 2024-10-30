@@ -2,14 +2,14 @@ import { View, Text } from "react-native";
 import React from "react";
 import tw from "twrnc";
 
-const Text = ({ text, textStyle }) => {
+const Text = ({ children, textStyle, title = "text" }) => {
   return (
     <Text
       style={tw.style(`${textStyle}`, {
-        fontFamily: "Sans",
+        fontFamily: title === "title" ? "Manrope-bold" : "Manrope",
       })}
     >
-      {text}
+      {children}
     </Text>
   );
 };

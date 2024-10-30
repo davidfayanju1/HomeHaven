@@ -83,7 +83,6 @@ const Index = () => {
 
   return (
     <>
-      {/* <SafeAreaView edges={["top", "bottom"]} style={tw``}> */}
       <Animated.ScrollView
         ref={scrollViewRef}
         horizontal
@@ -187,15 +186,13 @@ const Index = () => {
             </Text>
           </TouchableOpacity>
         )}
-        {activeIndex !== 2 && (
-          <Button
-            handlePress={handleNext}
-            containerStyle={`${activeIndex !== 0 ? "w-[80%]" : "w-full"}`}
-            title={"Next"}
-          />
-        )}
+
+        <Button
+          handlePress={activeIndex === 2 ? handleComplete : handleNext}
+          containerStyle={`${activeIndex !== 0 ? "w-[80%]" : "w-full"}`}
+          title={activeIndex === 2 ? "Login" : "Next"}
+        />
       </View>
-      {/* </SafeAreaView> */}
     </>
   );
 };
