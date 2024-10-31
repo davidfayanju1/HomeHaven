@@ -40,9 +40,9 @@ const Form = ({
             <UserIcon />
           ) : title === "search" ? (
             <AntDesign name="search1" size={24} color="#777777" />
-          ) : (
+          ) : title === "Password" ? (
             <PasswordIcon />
-          )}
+          ) : null}
         </View>
 
         <View style={tw`flex-col w-[80%] h-full gap-1`}>

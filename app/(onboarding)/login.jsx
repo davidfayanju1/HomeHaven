@@ -50,7 +50,7 @@ const Login = () => {
         <BtnOutline title={"Log In with Facebook"} label="facebook" />
       </View>
       <View>
-        <RText textStyle={"text-center text-[1rem]"}>
+        <RText textStyle={"text-center text-[1.1rem]"}>
           Don’t have an account?{" "}
           <Link href="/signup" style={tw`text-[#156651]`}>
             Register
