@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import tw from "twrnc";
 import RText from "../../components/common/RText";
 import Form from "../../components/common/Form";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import Button from "../../components/common/Button";
 import BtnOutline from "../../components/common/BtnOutline";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const Signup = () => {
+  const [form, setForm] = useState({});
+
   return (
     <KeyboardAwareScrollView
       style={tw`flex-1`}
@@ -17,7 +19,7 @@ const Signup = () => {
       scrollEnabled={true}
       showsVerticalScrollIndicator={false}
     >
-      <View style={tw`bg-[#F5F5F5] pt-[5rem] bg-gray-50 px-4 pb-[4rem]`}>
+      <View style={tw`bg-[#F5F5F5] pt-[4rem] bg-gray-50 px-4 pb-[4rem]`}>
         <View style={tw`mb-8`}>
           <RText title="title" textStyle={"text-[2.4rem]"}>
             Create Account
@@ -49,14 +51,14 @@ const Signup = () => {
           />
           <Form
             label={"Password"}
-            placeholder={"Enter password"}
+            placeholder={"*********"}
             containerStyle={"mb-5"}
             title={"Password"}
           />
         </View>
 
-        <View style={tw`mb-3`}>
-          <RText textStyle={"text-left text-[1.1rem]"}>
+        <View style={tw`mb-5`}>
+          <RText textStyle={"text-left text-[1.1rem] text-[#757575]"}>
             By clicking Create Account, you acknowledge you have read and agreed
             to our{" "}
             <Link href="/signup" style={tw`text-[#156651]`}>
@@ -66,7 +68,10 @@ const Signup = () => {
         </View>
 
         <View style={tw``}>
-          <Button title={"Create Account"} />
+          <Button
+            title={"Create Account"}
+            handlePress={() => router.push("/home")}
+          />
         </View>
 
         <View
