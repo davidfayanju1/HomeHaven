@@ -3,12 +3,18 @@ import React, { useState } from "react";
 import tw from "twrnc";
 import Feather from "@expo/vector-icons/Feather";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import RText from "./RText";
+import {
+  MessageIcon,
+  PasswordIcon,
+  UserIcon,
+} from "../../assets/icons/FormIcons";
 
 const Form = ({
+  label,
   title,
   value,
   placeholder,
-  label,
   handleChangeText,
   placeholdercolor,
   containerStyle,
@@ -22,54 +28,47 @@ const Form = ({
 
   return (
     <View style={tw`${containerStyle}`}>
-      {label && (
-        <Text
-          style={tw.style(`text-[1rem] text-black font-semibold mb-2`, {
-            fontFamily: "Uber-medium",
-          })}
-        >
-          {label}
-        </Text>
-      )}
       <View
-        style={tw`${
-          title === "Password" ? "flex-row items-center justify-start" : ""
-        } rounded-[8px] w-full ${
-          title === "search"
-            ? "h-[4rem] flex-row items-center px-4"
-            : "h-[3.2rem]"
-        } h-[3.2rem] ${
-          title === "search"
-            ? "border-solid border-[1px] border-[#777777]"
-            : "bg-gray-100 border-[#777777]"
-        }`}
+        style={tw`border-solid h-[4rem] border-[1px] border-[#E0E0E0] w-full ${
+          title === "search" ? "rounded-full" : "rounded-[13px]"
+        } bg-white flex-row items-center px-3 py-1.3`}
       >
-        {title === "search" && (
-          <View>
+        <View style={tw`w-[10%]`}>
+          {title === "email" ? (
+            <MessageIcon />
+          ) : title === "login" ? (
+            <UserIcon />
+          ) : title === "search" ? (
             <AntDesign name="search1" size={24} color="#777777" />
-          </View>
-        )}
-        <TextInput
-          style={tw.style(
-            `h-full ${title === "search" ? "text-white" : "text-black"}
-           px-[1rem] ${
-             title === "Password" ? "w-[80%]" : "w-full"
-           } text-[1.1rem] ${inputStyle}`,
-            {
-              fontFamily: "Uber-medium",
-            }
+          ) : (
+            <PasswordIcon />
           )}
-          value={value}
-          placeholder={placeholder}
-          onChangeText={handleChangeText}
-          placeholderTextColor={placeholdercolor}
-          secureTextEntry={title === "Password" && !togglePassword}
-          onFocus={focus}
-          onBlur={blur}
-          editable={editable}
-        />
+        </View>
+
+        <View style={tw`flex-col w-[80%] h-full gap-1`}>
+          <RText textStyle={"text-[#404040] ml-4 text-[15px]"}>{label}</RText>
+          <TextInput
+            style={tw.style(
+              `text-[#404040] outline-none px-[1rem] ${
+                title === "Password" ? "w-full" : "w-full"
+              } text-[1.1rem] ${inputStyle}`,
+              {
+                fontFamily: "Manrope",
+              }
+            )}
+            value={value}
+            placeholder={placeholder}
+            onChangeText={handleChangeText}
+            placeholderTextColor={placeholdercolor}
+            secureTextEntry={title === "Password" && !togglePassword}
+            onFocus={focus}
+            onBlur={blur}
+            editable={editable}
+          />
+        </View>
+
         {title === "Password" && (
-          <View style={tw`items-center h-full w-[20%] justify-center`}>
+          <View style={tw`items-center h-full justify-center`}>
             <TouchableOpacity
               style={tw`items-center justify-center h-full w-full`}
               onPress={() => setTogglePassword(!togglePassword)}

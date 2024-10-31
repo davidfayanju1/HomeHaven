@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -9,10 +9,11 @@ const RootLayout = () => {
     Monrope: require("../assets/fonts/manRope/Manrope-Medium.ttf"),
     "Monrope-bold": require("../assets/fonts/manRope/Manrope-Bold.ttf"),
     "Monrope-light": require("../assets/fonts/manRope/Manrope-Light.ttf"),
+    "Monrope-ExtraBold": require("../assets/fonts/manRope/Manrope-ExtraBold.ttf"),
   });
 
   useEffect(() => {
-    SplashScreen.preventAutoHideAsync(); // Prevent auto-hide in useEffect
+    SplashScreen.preventAutoHideAsync();
   }, []);
 
   useEffect(() => {

@@ -1,13 +1,49 @@
 import { View } from "react-native";
-import React from "react";
-import Text from "../../components/common/Text";
+import React, { useState } from "react";
+import tw from "twrnc";
+import RText from "../../components/common/RText";
+import Form from "../../components/common/Form";
+import Button from "../../components/common/Button";
 
 const Login = () => {
   return (
-    <View>
-      <Text title="title" textStyle={"text-[2rem]"}>
-        Welcome Back!
-      </Text>
+    <View style={tw`flex-1 bg-[#F5F5F5] pt-[4rem] bg-gray-50 px-4`}>
+      <View style={tw`mb-6`}>
+        <RText title="title" textStyle={"text-[2.4rem]"}>
+          Welcome Back!
+        </RText>
+        <RText textStyle={"text-[#757575] text-[1.2rem]"}>
+          Enter your email to start shopping and get awesome deals today!
+        </RText>
+      </View>
+
+      <View>
+        <Form
+          label={"Email"}
+          title={"email"}
+          placeholder={"Enter Email"}
+          containerStyle={"mb-8"}
+        />
+        <Form
+          label={"Password"}
+          title={"Password"}
+          placeholder={"******"}
+          containerStyle={"mb-4"}
+        />
+
+        <RText textStyle={"text-[#156651] mb-4 text-[1.1rem]"}>
+          Forgot Password ?
+        </RText>
+        <Button title={"Log In"} />
+      </View>
+
+      <View style={tw`flex-row w-full items-center justify-between gap-1`}>
+        <View style={tw`w-[40%] h-[.2rem] bg-[#C2C2C2]`}></View>
+        <RText>OR</RText>
+        <View style={tw`w-[40%] h-[.2rem] bg-[#C2C2C2]`}></View>
+      </View>
+
+      <View></View>
     </View>
   );
 };

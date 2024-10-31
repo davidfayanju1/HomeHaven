@@ -17,6 +17,7 @@ import slide2 from "../assets/images/slide2.png";
 import slide3 from "../assets/images/slide3.png";
 
 import Button from "../components/common/Button";
+import RText from "../components/common/RText";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -96,19 +97,19 @@ const Index = () => {
           <View
             key={index}
             style={[
-              tw`w-full items-center justify-start rounded-t-10`,
+              tw`w-full items-center bg-gray-100 justify-start rounded-t-10`,
               { width: SCREEN_WIDTH },
             ]}
           >
             <Image
               source={item.image}
-              style={tw`w-full h-[70%]`}
+              style={tw`w-full min-h-[60%]`}
               resizeMode="cover"
             />
 
             <View
               style={[
-                tw`w-full items-center justify-start px-3`,
+                tw`w-full items-center justify-start px-3 mt-8`,
                 {
                   width: SCREEN_WIDTH,
                   borderTopRightRadius: 20,
@@ -117,32 +118,22 @@ const Index = () => {
                 },
               ]}
             >
-              <Text
-                style={tw.style(
-                  `text-[2.3rem] font-bold text-center text-black mt-8`,
-                  {
-                    fontFamily: "Uber-bold",
-                  }
-                )}
+              <RText
+                title="title"
+                textStyle={"text-[2.5rem] font-bold text-center"}
               >
                 {item.header}
-              </Text>
-              <Text
-                style={tw.style(
-                  `text-5 mt-3 text-[#757575] text-center text-gray-500`,
-                  {
-                    fontFamily: "Uber-medium",
-                  }
-                )}
-              >
+              </RText>
+
+              <RText textStyle="text-5 text-[#757575] text-center">
                 {item.description}
-              </Text>
+              </RText>
             </View>
           </View>
         ))}
       </Animated.ScrollView>
 
-      <View style={tw`flex-row justify-center items-center`}>
+      <View style={tw`flex-row justify-center mt-3 items-center`}>
         {carouselItems.map((_, index) => {
           const width = scrollX.interpolate({
             inputRange: [

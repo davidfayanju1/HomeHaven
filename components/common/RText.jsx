@@ -2,11 +2,11 @@ import { View, Text } from "react-native";
 import React from "react";
 import tw from "twrnc";
 
-const Text = ({ children, textStyle, title = "text" }) => {
+const RText = ({ children, textStyle, title = "text" }) => {
   return (
     <Text
       style={tw.style(`${textStyle}`, {
-        fontFamily: title === "title" ? "Manrope-bold" : "Manrope",
+        fontFamily: title === "title" ? "Manrope-ExtraBold" : "Manrope",
       })}
     >
       {children}
@@ -14,4 +14,4 @@ const Text = ({ children, textStyle, title = "text" }) => {
   );
 };
 
-export default Text;
+export default RText;
