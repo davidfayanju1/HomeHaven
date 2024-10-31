@@ -1,14 +1,24 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import RText from "./RText";
+import tw from "twrnc";
+import { FacebookIcon, GoogleIcon } from "../../assets/icons/FormIcons";
 
-const BtnOutline = ({ title, containerStyle, textStyle, handlePress }) => {
+const BtnOutline = ({
+  title,
+  label = "google",
+  containerStyle,
+  textStyle,
+  handlePress,
+}) => {
   return (
     <TouchableOpacity
-      style={tw`${containerStyle} border-solid border-[1px] bg-transparent border-[#156651] h-[3.4rem] rounded-[6px] items-center justify-center text-center`}
+      style={tw`${containerStyle} flex-row items-center gap-3 border-solid border-[1px] bg-transparent border-[#156651] h-[3.4rem] rounded-[6px] items-center justify-center text-center`}
       onPress={handlePress}
     >
-      <RText textStyle={`font-semibold text-white text-[1.12rem] ${textStyle}`}>
+      {label === "google" ? <GoogleIcon /> : <FacebookIcon />}
+
+      <RText textStyle={`font-bold text-[#156651] text-[1.12rem] ${textStyle}`}>
         {title}
       </RText>
     </TouchableOpacity>

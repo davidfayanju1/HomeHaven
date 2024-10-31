@@ -73,7 +73,7 @@ const Form = ({
               style={tw`items-center justify-center h-full w-full`}
               onPress={() => setTogglePassword(!togglePassword)}
             >
-              {togglePassword ? (
+              {!togglePassword ? (
                 <Feather name="eye" size={19} color="gray" />
               ) : (
                 <Feather name="eye-off" size={19} color="gray" />
