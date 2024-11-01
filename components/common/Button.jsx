@@ -3,13 +3,22 @@ import React from "react";
 import tw from "twrnc";
 import RText from "./RText";
 
-const Button = ({ title, containerStyle, textStyle, handlePress }) => {
+const Button = ({
+  title,
+  containerStyle,
+  textStyle,
+  handlePress,
+  backgroundColor = "bg-[#156651]",
+  radius = "rounded-[9px]",
+  height = "h-[3.4rem]",
+  textColor = "text-white",
+}) => {
   return (
     <TouchableOpacity
-      style={tw`${containerStyle} bg-[#156651] h-[3.4rem] rounded-[9px] items-center justify-center text-center`}
+      style={tw`${containerStyle} ${backgroundColor} ${radius} ${height} items-center justify-center text-center`}
       onPress={handlePress}
     >
-      <RText textStyle={`font-semibold text-white text-[1.12rem] ${textStyle}`}>
+      <RText textStyle={`font-bold ${textColor} text-[1.12rem] ${textStyle}`}>
         {title}
       </RText>
     </TouchableOpacity>

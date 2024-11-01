@@ -9,6 +9,7 @@ import {
   PasswordIcon,
   UserIcon,
 } from "../../assets/icons/FormIcons";
+import { CameraIcon } from "../../assets/icons/TabsIcons";
 
 const Form = ({
   label,
@@ -22,6 +23,7 @@ const Form = ({
   focus,
   blur,
   editable = true,
+  search,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [togglePassword, setTogglePassword] = useState(false);
@@ -29,7 +31,7 @@ const Form = ({
   return (
     <View style={tw`${containerStyle}`}>
       <View
-        style={tw`border-solid h-[4rem] border-[1px] border-[#E0E0E0] w-full ${
+        style={tw`border-solid h-[3.7rem] border-[1px] border-[#E0E0E0] w-full ${
           title === "search" ? "rounded-full" : "rounded-[13px]"
         } bg-white flex-row items-center px-3 py-1.3`}
       >
@@ -39,14 +41,21 @@ const Form = ({
           ) : title === "login" ? (
             <UserIcon />
           ) : title === "search" ? (
-            <AntDesign name="search1" size={24} color="#777777" />
+            <AntDesign name="search1" size={21} color="#000000" />
           ) : title === "Password" ? (
             <PasswordIcon />
           ) : null}
         </View>
 
-        <View style={tw`flex-col w-[80%] h-full gap-1`}>
-          <RText textStyle={"text-[#404040] ml-4 text-[15px]"}>{label}</RText>
+        <View
+          style={tw`flex-col w-[80%] h-full items-center justify-center gap-1`}
+        >
+          {label && (
+            <RText textStyle={"text-[#404040] ml-4 text-[15px] self-start"}>
+              {label}
+            </RText>
+          )}
+
           <TextInput
             style={tw.style(
               `text-[#404040] outline-none px-[1rem] ${
@@ -66,6 +75,12 @@ const Form = ({
             editable={editable}
           />
         </View>
+
+        {search && (
+          <View>
+            <CameraIcon />
+          </View>
+        )}
 
         {title === "Password" && (
           <View style={tw`items-center h-full justify-center`}>
