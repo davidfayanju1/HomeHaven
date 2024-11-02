@@ -90,7 +90,7 @@ const Account = () => {
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={tw`mt-9 px-3 mb-[8rem]`}
+        contentContainerStyle={tw`mt-9 px-3 pb-[3rem]`}
       >
         <RText title="title" textStyle={"mb-5 text-[#404040] text-[1.6rem]"}>
           General

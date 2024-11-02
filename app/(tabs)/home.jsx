@@ -20,11 +20,15 @@ import { CardSmall } from "../../components/modules/home/Card";
 import hero from "../../assets/images/hero.png";
 import { LinearGradient } from "expo-linear-gradient";
 import Button from "../../components/common/Button";
+import chairDef from "../../assets/images/chairDef.png";
+import chairGraySmall from "../../assets/images/chairGraySmall.png";
+
 const { width } = Dimensions.get("window");
 
 const Home = () => {
   const cartItems = [
     {
+      img: chairDef,
       name: "EKERO",
       price: "$230.00",
       prevPrice: "$512.58",
@@ -33,6 +37,7 @@ const Home = () => {
     },
 
     {
+      img: chairGraySmall,
       name: "EKERO",
       price: "$230.00",
       prevPrice: "$512.58",
@@ -41,6 +46,7 @@ const Home = () => {
     },
 
     {
+      img: chairDef,
       name: "EKERO",
       price: "$230.00",
       prevPrice: "$512.58",
@@ -49,6 +55,7 @@ const Home = () => {
     },
 
     {
+      img: chairGraySmall,
       name: "EKORU",
       price: "$350.00",
       prevPrice: "$212.58",
@@ -136,12 +143,13 @@ const Home = () => {
         </View>
 
         {/* card component goes here */}
-        <View style={tw`pl-4 mt-6`}>
+        <View style={tw`mt-6`}>
           <FlatList
             data={cartItems}
             renderItem={({ item }) => <CardSmall item={item} />}
             horizontal={true} // Add this prop
             showsHorizontalScrollIndicator={false} // Optional
+            // keyExtractor={(item) => item.name}
           />
         </View>
       </ScrollView>

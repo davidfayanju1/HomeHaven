@@ -16,7 +16,11 @@ const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarStyle: tw`bg-white rounded-tl-[18px] rounded-tr-[18px]`,
+        tabBarStyle: {
+          backgroundColor: "#fff",
+          borderTopLeftRadius: 18,
+          borderTopRightRadius: 18,
+        },
       }}
     >
       <Tabs.Screen
