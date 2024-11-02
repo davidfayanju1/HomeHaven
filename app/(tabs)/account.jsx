@@ -56,7 +56,7 @@ const Account = () => {
 
   return (
     <View style={tw`flex-1`}>
-      <View style={tw`w-full h-[13rem] relative bg-red-900`}>
+      <View style={tw`w-full h-[12rem] relative`}>
         <Image source={logo} resizeMode="cover" style={tw`h-full`} />
         <View
           style={tw`absolute top-[30%] flex-row items-center justify-between gap-4 px-3.3 mx-auto w-full`}
@@ -83,9 +83,9 @@ const Account = () => {
           </View>
         </View>
 
-        <View>
+        <TouchableOpacity>
           <EditIcon />
-        </View>
+        </TouchableOpacity>
       </View>
 
       <ScrollView
@@ -110,6 +110,13 @@ const Account = () => {
             <ArrowRightIcon />
           </TouchableOpacity>
         ))}
+
+        <RText
+          title="title"
+          textStyle={"mb-5 mt-8 text-[#404040] text-[1.5rem]"}
+        >
+          Help
+        </RText>
       </ScrollView>
     </View>
   );

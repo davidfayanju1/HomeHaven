@@ -31,7 +31,9 @@ const Form = ({
   return (
     <View style={tw`${containerStyle}`}>
       <View
-        style={tw`border-solid h-[3.7rem] border-[1px] border-[#E0E0E0] w-full ${
+        style={tw`border-solid ${
+          search ? "h-[3rem]" : "h-[3.7rem]"
+        } border-[1px] border-[#E0E0E0] w-full ${
           title === "search" ? "rounded-full" : "rounded-[13px]"
         } bg-white flex-row items-center px-3 py-1.3`}
       >

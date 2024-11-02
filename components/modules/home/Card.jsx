@@ -1,14 +1,16 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import tw from "twrnc";
 import RText from "../../common/RText";
 import { Star } from "../../../assets/icons/TabsIcons";
 import Tag from "../../common/Tag";
+import { router } from "expo-router";
 
 export const CardSmall = ({ item }) => {
   return (
-    <View
+    <TouchableOpacity
       style={tw`bg-white w-[11rem] mr-5 rounded-[15px] p-3 pt-5 pb-9 min-h-[12rem]`}
+      onPress={() => router.push(`/details/${item.name}`)}
     >
       <View style={tw`h-[9rem] w-full relative`}>
         <Image
@@ -32,6 +34,6 @@ export const CardSmall = ({ item }) => {
           <RText>{`${item.rating}(${item.number})`}</RText>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };

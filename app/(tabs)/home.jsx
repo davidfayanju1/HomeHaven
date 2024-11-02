@@ -78,21 +78,21 @@ const Home = () => {
 
       <View style={tw`flex-row items-center mb-8 justify-between w-full px-3`}>
         <MarkerIcon />
-        <RText
-          textStyle={"text-[#404040]"}
-          numberOfLines={1}
-          ellipsizeMode={"tail"}
-        >
-          Deliver to{" "}
-          <RText
+
+        <View style={tw`w-[72%]`}>
+          <Text
+            style={tw.style(`w-full text-[1rem]`, {
+              fontFamily: "Manrope",
+            })}
             numberOfLines={1}
             ellipsizeMode={"tail"}
-            title="title"
-            textStyle={"text-[#404040] font-bold"}
           >
-            3517 W. Gray St. Utica, Pennsylv...
-          </RText>
-        </RText>
+            Deliver to{" "}
+            <Text style={tw`font-bold`}>
+              3517 W. Gray St. Utica, Pennsilvenia
+            </Text>
+          </Text>
+        </View>
         <DropdownIcon />
       </View>
 
@@ -129,7 +129,7 @@ const Home = () => {
             </View>
           </LinearGradient>
         </View>
-        <View style={tw` mt-7`}>
+        <View style={tw`mt-11`}>
           <View style={tw`flex-row items-center justify-between px-3`}>
             <RText title="title" textStyle={"text-[2rem] text-[#404040]"}>
               Special Offers
@@ -143,12 +143,12 @@ const Home = () => {
         </View>
 
         {/* card component goes here */}
-        <View style={tw`mt-6`}>
+        <View style={tw`mt-6 flex-1 pl-4`}>
           <FlatList
             data={cartItems}
             renderItem={({ item }) => <CardSmall item={item} />}
-            horizontal={true} // Add this prop
-            showsHorizontalScrollIndicator={false} // Optional
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
             // keyExtractor={(item) => item.name}
           />
         </View>

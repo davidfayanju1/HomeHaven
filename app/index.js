@@ -109,7 +109,7 @@ const Index = () => {
 
             <View
               style={[
-                tw`w-full items-center justify-start px-3 mt-8`,
+                tw`w-full items-center justify-start px-4 mt-8`,
                 {
                   width: SCREEN_WIDTH,
                   borderTopRightRadius: 20,
@@ -120,7 +120,7 @@ const Index = () => {
             >
               <RText
                 title="title"
-                textStyle={"text-[2.5rem] font-bold text-center"}
+                textStyle={"text-[2.4rem] font-bold text-center"}
               >
                 {item.header}
               </RText>
