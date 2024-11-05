@@ -75,7 +75,7 @@ const MyCart = () => {
         {cartItems.map((item, index) => (
           <View
             key={index}
-            style={tw`w-full mb-5 p-4 min-h-[12rem] rounded-[10px] bg-white flex-row items-center`}
+            style={tw`w-full mb-5 p-4 min-h-[12rem] rounded-[10px] bg-white shadow-lg flex-row items-center`}
           >
             <View style={tw`w-[40%]`}>
               <Image source={item.img} style={tw``} />

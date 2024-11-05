@@ -6,9 +6,9 @@ import tw from "twrnc";
 const Tag = ({ tagStyle }) => {
   return (
     <View
-      style={tw`w-[5rem] ${tagStyle} h-[1.7rem] bg-[#E44A4A] rounded-br-[9px] rounded-tl-[9px] item-center justify-center p-1`}
+      style={tw`w-[3.8rem] ${tagStyle} h-[1.7rem] bg-[#E44A4A] rounded-br-[9px] rounded-tl-[9px] item-center justify-center p-1`}
     >
-      <RText textStyle={"text-center text-white text-[1.1rem]"}>45% OFF</RText>
+      <RText textStyle={"text-center text-white text-[13px]"}>45% OFF</RText>
     </View>
   );
 };

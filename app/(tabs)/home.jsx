@@ -22,10 +22,39 @@ import { LinearGradient } from "expo-linear-gradient";
 import Button from "../../components/common/Button";
 import chairDef from "../../assets/images/chairDef.png";
 import chairGraySmall from "../../assets/images/chairGraySmall.png";
+import axios from "axios";
 
 const { width } = Dimensions.get("window");
 
 const Home = () => {
+  const query = `
+  {
+    products {
+      id
+      name
+      price
+    }
+  }
+`;
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.ir/graphql/products",
+        {
+          query: query,
+        }
+      );
+      const products = response.data.data.products;
+      console.log(products, "Products");
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  // Call the function to fetch products
+  fetchProducts();
+
   const cartItems = [
     {
       img: chairDef,
@@ -76,12 +105,12 @@ const Home = () => {
         <HomeBellIcon />
       </View>
 
-      <View style={tw`flex-row items-center mb-8 justify-between w-full px-3`}>
+      <View style={tw`flex-row items-center mb-6 justify-between w-full px-3`}>
         <MarkerIcon />
 
-        <View style={tw`w-[72%]`}>
+        <View style={tw`w-[81%]`}>
           <Text
-            style={tw.style(`w-full text-[1rem]`, {
+            style={tw.style(`w-full font-light text-[14px]`, {
               fontFamily: "Manrope",
             })}
             numberOfLines={1}
@@ -100,17 +129,17 @@ const Home = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={tw`pb-[4rem]`}
       >
-        <View style={tw`w-full relative h-[15rem]`}>
+        <View style={tw`w-full relative h-[14rem]`}>
           <Image source={hero} style={tw`w-full h-full`} />
           <LinearGradient
             colors={["#156651F0", "transparent"]}
             start={[0.35, 0.9]}
             end={[0.9, 0.9]}
-            locations={[0.2, 0.8]}
+            locations={[0.1, 0.5]}
             style={tw`absolute h-full w-full justify-center px-3 top-0 left-0 bg-transparent`}
           >
-            <View style={tw`w-[60%]`}>
-              <RText textStyle={"text-white text-left text-[2rem]"}>
+            <View style={tw`w-[50%]`}>
+              <RText textStyle={"text-white font-bold text-left text-[1.5rem]"}>
                 Celebrate The Season With Us!
               </RText>
               <RText
@@ -119,12 +148,13 @@ const Home = () => {
                 Get discounts up to 75% for furniture & decoration
               </RText>
               <Button
-                containerStyle={"bg-white w-[70%]"}
+                containerStyle={"bg-white w-[60%]"}
                 backgroundColor="bg-white"
                 radius="rounded-full"
-                height="h-[2.7rem]"
+                height="h-[2.4rem]"
                 title={"Shop Now"}
                 textColor="text-[#156651]"
+                textSize="text-[14px]"
               />
             </View>
           </LinearGradient>

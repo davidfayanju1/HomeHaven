@@ -13,12 +13,12 @@ const BtnOutline = ({
 }) => {
   return (
     <TouchableOpacity
-      style={tw`${containerStyle} flex-row items-center gap-3 border-solid border-[1px] bg-transparent border-[#156651] h-[3.4rem] rounded-[9px] items-center justify-center text-center`}
+      style={tw`${containerStyle} flex-row items-center gap-3 border-solid border-[1px] bg-transparent border-[#156651] h-[3.1rem] rounded-[9px] items-center justify-center text-center`}
       onPress={handlePress}
     >
       {label === "google" ? <GoogleIcon /> : <FacebookIcon />}
 
-      <RText textStyle={`font-bold text-[#156651] text-[1.12rem] ${textStyle}`}>
+      <RText textStyle={`font-bold text-[#156651] text-[1.1rem] ${textStyle}`}>
         {title}
       </RText>
     </TouchableOpacity>

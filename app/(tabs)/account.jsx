@@ -17,6 +17,7 @@ import {
 } from "../../assets/icons/TabsIcons";
 import profile from "../../assets/images/profile.png";
 import { router } from "expo-router";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const Account = () => {
   const acctLink = [
@@ -52,12 +53,23 @@ const Account = () => {
       icon: <SecurityIcon />,
       route: "/home",
     },
+
+    {
+      name: "Privacy Policy",
+      icon: <MaterialIcons name="privacy-tip" size={24} color="black" />,
+      route: "/home",
+    },
+    {
+      name: "Support",
+      icon: <MaterialIcons name="contact-support" size={24} color="black" />,
+      route: "/home",
+    },
   ];
 
   return (
     <View style={tw`flex-1`}>
       <View style={tw`w-full h-[12rem] relative`}>
-        <Image source={logo} resizeMode="cover" style={tw`h-full`} />
+        <Image source={logo} resizeMode="cover" style={tw`h-full w-full`} />
         <View
           style={tw`absolute top-[30%] flex-row items-center justify-between gap-4 px-3.3 mx-auto w-full`}
         >
@@ -67,7 +79,7 @@ const Account = () => {
       </View>
 
       <View
-        style={tw`bg-white p-4 h-[6rem] flex-row justify-between items-center mx-auto w-[93%] rounded-[11px] mt-[-3.2rem]`}
+        style={tw`bg-white shadow-lg p-4 h-[6rem] flex-row justify-between items-center mx-auto w-[93%] rounded-[11px] mt-[-3.2rem]`}
       >
         <View style={tw`flex-row items-center gap-2`}>
           <View
@@ -96,15 +108,15 @@ const Account = () => {
           General
         </RText>
 
-        {acctLink.map(({ name, icon, route }, index) => (
+        {acctLink.slice(0, 6).map(({ name, icon, route }, index) => (
           <TouchableOpacity
             onPress={() => router.push(route)}
             key={name}
-            style={tw`bg-white min-h-[3.8rem] mb-4 py-2 rounded-[11px] flex-row items-center justify-between px-2`}
+            style={tw`bg-white shadow-lg min-h-[3.8rem] mb-4 py-2 rounded-[11px] flex-row items-center justify-between px-3.5`}
           >
-            <View style={tw`flex-row items-center justify-center gap-2`}>
+            <View style={tw`flex-row items-center justify-center gap-3.5`}>
               <View>{icon}</View>
-              <RText textStyle={"text-[1.1rem]"}>{name}</RText>
+              <RText textStyle={"text-[1rem] text-[#404040]"}>{name}</RText>
             </View>
 
             <ArrowRightIcon />
@@ -117,6 +129,21 @@ const Account = () => {
         >
           Help
         </RText>
+
+        {acctLink.slice(-2).map(({ name, icon, route }, index) => (
+          <TouchableOpacity
+            onPress={() => router.push(route)}
+            key={name}
+            style={tw`bg-white shadow-lg min-h-[3.8rem] mb-4 py-2 rounded-[11px] flex-row items-center justify-between px-3.5`}
+          >
+            <View style={tw`flex-row items-center justify-center gap-3.5`}>
+              <View>{icon}</View>
+              <RText textStyle={"text-[1rem] text-[#404040]"}>{name}</RText>
+            </View>
+
+            <ArrowRightIcon />
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </View>
   );

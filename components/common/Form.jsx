@@ -32,12 +32,12 @@ const Form = ({
     <View style={tw`${containerStyle}`}>
       <View
         style={tw`border-solid ${
-          search ? "h-[3rem]" : "h-[3.7rem]"
+          search ? "h-[3rem]" : "h-[3.5rem]"
         } border-[1px] border-[#E0E0E0] w-full ${
-          title === "search" ? "rounded-full" : "rounded-[13px]"
-        } bg-white flex-row items-center px-3 py-1.3`}
+          title === "search" ? "rounded-full" : "rounded-[12px]"
+        } bg-white mx-auto flex-row items-center px-3 py-1.3`}
       >
-        <View style={tw`w-[10%]`}>
+        <View style={tw`w-[10%] items-end`}>
           {title === "email" ? (
             <MessageIcon />
           ) : title === "login" ? (
@@ -50,7 +50,7 @@ const Form = ({
         </View>
 
         <View
-          style={tw`flex-col w-[80%] h-full items-center justify-center gap-1`}
+          style={tw`flex-col w-[82%] h-full items-center justify-center gap-1`}
         >
           {label && (
             <RText textStyle={"text-[#404040] ml-4 text-[15px] self-start"}>

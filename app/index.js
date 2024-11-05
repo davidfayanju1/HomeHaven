@@ -97,7 +97,7 @@ const Index = () => {
           <View
             key={index}
             style={[
-              tw`w-full items-center bg-gray-100 justify-start rounded-t-10`,
+              tw`items-center bg-[#F5F5F5] justify-start`,
               { width: SCREEN_WIDTH },
             ]}
           >
@@ -109,23 +109,23 @@ const Index = () => {
 
             <View
               style={[
-                tw`w-full items-center justify-start px-4 mt-8`,
+                tw`w-full items-centerjustify-start px-4.9 mt-8`,
                 {
                   width: SCREEN_WIDTH,
-                  borderTopRightRadius: 20,
-                  borderTopLeftRadius: 20,
+                  // borderTopRightRadius: 20,
+                  // borderTopLeftRadius: 20,
                   overflow: "hidden",
                 },
               ]}
             >
               <RText
                 title="title"
-                textStyle={"text-[2.4rem] font-bold text-center"}
+                textStyle={"text-[2.1rem] font-semibold text-center"}
               >
                 {item.header}
               </RText>
 
-              <RText textStyle="text-5 text-[#757575] text-center">
+              <RText textStyle="text-[18px] mt-3 text-[#757575] text-center">
                 {item.description}
               </RText>
             </View>
@@ -133,7 +133,7 @@ const Index = () => {
         ))}
       </Animated.ScrollView>
 
-      <View style={tw`flex-row justify-center mt-3 items-center`}>
+      <View style={tw`flex-row justify-center pt-3 items-center bg-[#F5F5F5]`}>
         {carouselItems.map((_, index) => {
           const width = scrollX.interpolate({
             inputRange: [
@@ -151,7 +151,7 @@ const Index = () => {
               index * SCREEN_WIDTH,
               (index + 1) * SCREEN_WIDTH,
             ],
-            outputRange: ["#E5E7EB", "#005667", "#E5E7EB"],
+            outputRange: ["#E0E0E0", "#156651", "#E0E0E0"],
             extrapolate: "clamp",
           });
 
@@ -164,14 +164,17 @@ const Index = () => {
         })}
       </View>
       <View
-        style={tw`w-full mt-10 mb-15 items-center justify-between flex-row px-5 gap-2`}
+        style={tw`w-full pt-6 pb-8 bg-[#F5F5F5] items-center justify-between flex-row px-5 gap-2`}
       >
         {activeIndex !== 0 && (
           <TouchableOpacity onPress={handlePrev} style={tw`w-[20%]`}>
             <Text
-              style={tw.style(`text-center text-black font-semibold text-4.7`, {
-                fontFamily: "Uber-medium",
-              })}
+              style={tw.style(
+                `text-center text-[#156651] font-semibold text-4.7`,
+                {
+                  fontFamily: "Manrope-bold",
+                }
+              )}
             >
               Back
             </Text>

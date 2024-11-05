@@ -9,7 +9,7 @@ import { router } from "expo-router";
 export const CardSmall = ({ item }) => {
   return (
     <TouchableOpacity
-      style={tw`bg-white w-[11rem] mr-5 rounded-[15px] p-3 pt-5 pb-9 min-h-[12rem]`}
+      style={tw`bg-white w-[11rem] shadow-lg mr-5 rounded-[15px] p-3 pt-5 pb-7 min-h-[12rem]`}
       onPress={() => router.push(`/details/${item.name}`)}
     >
       <View style={tw`h-[9rem] w-full relative`}>
@@ -18,10 +18,10 @@ export const CardSmall = ({ item }) => {
           resizeMod="contain"
           style={tw`w-full h-full`}
         />
-        <Tag tagStyle={"absolute bottom-0"} />
+        <Tag tagStyle={"absolute bottom-[-6%]"} />
       </View>
 
-      <View style={tw`pt-3`}>
+      <View style={tw`pt-6`}>
         <RText textStyle={"text-[1.3rem]"}>{item.name}</RText>
         <RText textStyle={"text-[1.75rem] text-[#404040]"} title="title">
           {item.price}

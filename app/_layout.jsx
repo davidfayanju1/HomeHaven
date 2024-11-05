@@ -3,13 +3,15 @@ import React, { useEffect } from "react";
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { ApolloProvider } from "@apollo/client";
+import client from "../lib/ApolloClient";
 
 const RootLayout = () => {
   const [fontsLoaded, error] = useFonts({
-    Monrope: require("../assets/fonts/manRope/Manrope-Medium.ttf"),
-    "Monrope-bold": require("../assets/fonts/manRope/Manrope-Bold.ttf"),
-    "Monrope-light": require("../assets/fonts/manRope/Manrope-Light.ttf"),
-    "Monrope-ExtraBold": require("../assets/fonts/manRope/Manrope-ExtraBold.ttf"),
+    Manrope: require("../assets/fonts/manRope/Manrope-Medium.ttf"),
+    "Manrope-bold": require("../assets/fonts/manRope/Manrope-Bold.ttf"),
+    "Manrope-light": require("../assets/fonts/manRope/Manrope-Light.ttf"),
+    "Manrope-ExtraBold": require("../assets/fonts/manRope/Manrope-ExtraBold.ttf"),
   });
 
   useEffect(() => {
@@ -29,12 +31,14 @@ const RootLayout = () => {
   if (!fontsLoaded) return null;
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="details" options={{ headerShown: false }} />
-    </Stack>
+    <ApolloProvider client={client}>
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="details" options={{ headerShown: false }} />
+      </Stack>
+    </ApolloProvider>
   );
 };
 
