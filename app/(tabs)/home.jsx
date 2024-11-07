@@ -1,12 +1,5 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  Image,
-  Dimensions,
-  FlatList,
-} from "react-native";
-import React from "react";
+import { View, ScrollView, Image, Dimensions, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";
 import tw from "twrnc";
 import Form from "../../components/common/Form";
 import {
@@ -22,13 +15,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import Button from "../../components/common/Button";
 import chairDef from "../../assets/images/chairDef.png";
 import chairGraySmall from "../../assets/images/chairGraySmall.png";
-import axios from "axios";
+import { useQuery, gql } from "@apollo/client";
+import Text from "../../lib/Text";
 
 const { width } = Dimensions.get("window");
 
-const Home = () => {
-  const query = `
-  {
+const QUERY = gql`
+  query GetProducts {
     products {
       id
       name
@@ -37,23 +30,8 @@ const Home = () => {
   }
 `;
 
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get(
-        "https://jsonplaceholder.ir/graphql/products",
-        {
-          query: query,
-        }
-      );
-      const products = response.data.data.products;
-      console.log(products, "Products");
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
-  };
-
-  // Call the function to fetch products
-  fetchProducts();
+const Home = () => {
+  const { loading, error, data } = useQuery(QUERY);
 
   const cartItems = [
     {
@@ -93,11 +71,14 @@ const Home = () => {
     },
   ];
 
+  console.log(data, "data");
+  console.error(error, "error");
+
   return (
     <View style={tw`flex-1 bg-[#F5F5F5] pt-[5rem]`}>
       <View style={tw`flex-row items-center px-3 mb-3 gap-3`}>
         <Form
-          containerStyle={"w-[87%]"}
+          containerStyle={"w-[90.4%]"}
           title={"search"}
           placeholder={"Search Candles"}
           search
@@ -129,19 +110,19 @@ const Home = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={tw`pb-[4rem]`}
       >
-        <View style={tw`w-full relative h-[14rem]`}>
+        <View style={tw`w-full relative h-[15rem]`}>
           <Image source={hero} style={tw`w-full h-full`} />
           <LinearGradient
-            colors={["#156651F0", "transparent"]}
-            start={[0.35, 0.9]}
+            colors={["#156651F0", "#156651B3", "transparent"]}
+            start={[0.05, 0.9]}
             end={[0.9, 0.9]}
             locations={[0.1, 0.5]}
             style={tw`absolute h-full w-full justify-center px-3 top-0 left-0 bg-transparent`}
           >
             <View style={tw`w-[50%]`}>
-              <RText textStyle={"text-white font-bold text-left text-[1.5rem]"}>
+              <Text size={27} style={tw`text-white text-left`}>
                 Celebrate The Season With Us!
-              </RText>
+              </Text>
               <RText
                 textStyle={"font-light my-4 text-left text-white text-[1rem]"}
               >
@@ -173,14 +154,18 @@ const Home = () => {
         </View>
 
         {/* card component goes here */}
-        <View style={tw`mt-6 flex-1 pl-4`}>
-          <FlatList
-            data={cartItems}
-            renderItem={({ item }) => <CardSmall item={item} />}
+        <View style={tw`mt-6`}>
+          <ScrollView
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            // keyExtractor={(item) => item.name}
-          />
+            contentContainerStyle={tw``}
+          >
+            {cartItems.map((item) => (
+              <View key={item.name} style={tw`pt-2 pl-3 pb-2`}>
+                <CardSmall item={item} />
+              </View>
+            ))}
+          </ScrollView>
         </View>
       </ScrollView>
     </View>

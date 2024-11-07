@@ -35,7 +35,7 @@ const Signup = () => {
       scrollEnabled={true}
       showsVerticalScrollIndicator={false}
     >
-      <View style={tw`bg-[#F5F5F5] pt-[5rem] bg-gray-50 px-4 pb-[4rem]`}>
+      <View style={tw`bg-[#F5F5F5] flex-1 pt-[5rem] bg-gray-50 px-4 pb-[4rem]`}>
         <View style={tw`mb-10`}>
           <Text style={tw`font-bold text-[#404040]`} size={34}>
             Create Account
